@@ -45,9 +45,10 @@
         </receiver>
 
         <activity
-            android:name=".Gui.OutlineActivity"
-            android:label="MobileOrg"  >
-            <intent-filter>
+            android:label="MobileOrg"
+            android:name=".Gui.OutlineActivity" 
+            android:theme="@android:style/Theme.Black.NoTitleBar">
+            <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -56,8 +57,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Gui.NodeViewActivity"
-            android:label="Org View" >
+            android:label="Org View"
+            android:name=".Gui.NodeViewActivity" 
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
         </activity>
         <activity
             android:name=".Gui.NodeEditActivity"

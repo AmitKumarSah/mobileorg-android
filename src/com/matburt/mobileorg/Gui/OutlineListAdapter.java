@@ -69,7 +69,7 @@ class OutlineListAdapter extends BaseAdapter
 		ViewHolder holder;
 		
 		if (convertView == null) {
-			convertView = this.lInflator.inflate(R.layout.outline_new, null);
+			convertView = this.lInflator.inflate(R.layout.outline_item, null);
 			
 			holder = new ViewHolder();
 			holder.orgItem = (TextView) convertView.findViewById(R.id.orgItem);

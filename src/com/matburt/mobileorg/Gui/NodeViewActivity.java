@@ -16,6 +16,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.markupartist.android.widget.ActionBar;
+import com.markupartist.android.widget.ActionBar.Action;
 import com.markupartist.android.widget.ActionBar.IntentAction;
 import com.matburt.mobileorg.R;
 import com.matburt.mobileorg.Parsing.MobileOrgApplication;
@@ -30,11 +31,18 @@ public class NodeViewActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.viewnode);
-		
+
 		ActionBar actionBar = (ActionBar) findViewById(R.id.actionbar);
-        actionBar.setHomeAction(new IntentAction(this, null, R.drawable.icon));
+		actionBar.setTitle("MobileOrg");
+        actionBar.setHomeAction(new IntentAction(this, new Intent(this,
+				OutlineActivity.class), R.drawable.icon));
+        
+		Intent intent2 = new Intent(this, NodeEditActivity.class);
+		intent2.putExtra("actionMode", NodeEditActivity.ACTIONMODE_CREATE);
+        final Action otherAction = new IntentAction(this, intent2, R.drawable.ic_menu_compose);
+        actionBar.addAction(otherAction);
 
-
+        
 		this.display = (WebView) this.findViewById(R.id.viewnode_webview);
 		display.setWebViewClient(new InternalWebViewClient());
 		display.setWebChromeClient(new InternalWebChromeClient());

@@ -16,9 +16,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ListView;
 
+import com.markupartist.android.widget.ActionBar;
+import com.markupartist.android.widget.ActionBar.Action;
+import com.markupartist.android.widget.ActionBar.IntentAction;
 import com.matburt.mobileorg.R;
 import com.matburt.mobileorg.Parsing.MobileOrgApplication;
 import com.matburt.mobileorg.Parsing.Node;
@@ -63,6 +67,20 @@ public class OutlineActivity extends ListActivity
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
+		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		setContentView(R.layout.outline);
+		
+		ActionBar actionBar = (ActionBar) findViewById(R.id.actionbar);
+		actionBar.setTitle("MobileOrg");
+		
+		actionBar.setHomeAction(new IntentAction(this, new Intent(this,
+				OutlineActivity.class), R.drawable.icon));
+        
+		Intent intent2 = new Intent(this, NodeEditActivity.class);
+		intent2.putExtra("actionMode", NodeEditActivity.ACTIONMODE_CREATE);
+        final Action otherAction = new IntentAction(this, intent2, R.drawable.ic_menu_compose);
+        actionBar.addAction(otherAction);
+        
 		this.appInst = (MobileOrgApplication) this.getApplication();
 		
 		this.outlineAdapter = new OutlineListAdapter(this, appInst.nodestackTop());
