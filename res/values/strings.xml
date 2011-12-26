@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_name">MobileOrgActivity</string>
+  <string name="app_name">MobileOrg</string>
   <string name="menu_outline">Outline</string>
   <string name="menu_capture">Capture</string>
   <string name="menu_settings">Settings</string>
